@@ -9,11 +9,12 @@ const AddChannel = ({ mutate }) => {
       mutate({ 
         variables: { name: evt.target.value },
         optimisticResponse: {
-          addChannel: {
-            name: evt.target.value,
-            id: Math.round(Math.random() * -1000000),
-            __typename: 'Channel',
-          },
+           __typename: 'Mutation',
+           addChannel: {
+             name: evt.target.value,
+             id: Math.round(Math.random() * -1000000),
+             __typename: 'Channel',
+           },
         },
         update: (store, { data: { addChannel } }) => {
             // Read the data from the cache for this query.
